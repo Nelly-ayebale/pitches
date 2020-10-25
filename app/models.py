@@ -40,6 +40,7 @@ class Pitch(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String(255))
     category= db.Column(db.String(255))
+    pitch = db.Column(db.String(300))
     comment = db.relationship('Comment', backref = 'pitch', lazy='dynamic')
     upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
     downvotes = db.relationship('Downvote', backref = 'pitch', lazy= 'dynamic')
