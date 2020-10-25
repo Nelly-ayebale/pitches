@@ -4,7 +4,7 @@ from wtforms.validators import Required
 
 class PitchForm(FlaskForm):
     title = StringField('Title Of Pitch', validators=[Required()])
-    category = RadioField('Which Category would you like to Pitch?', choices=[('projectpitch', 'projectpitch'), ('jobpitch', 'jobpitch'), ('businesspitch', 'businesspitch', 'businesspitch'), ('quotepitch', 'quotepitch'), validators=[Required()]])
+    category = RadioField('Which Category would you like to Pitch?', choices=[('projectpitch', 'Project Pitch'), ('jobpitch', 'Job Pitch'), ('businesspitch', 'Business Pitch'), ('quotepitch', 'Quote Pitch'), validators=[Required()]])
     pitch = TextAreaField('Go ahead and pitch!!', validators=[Required()])
 
 class CommentForm(FlaskForm):
