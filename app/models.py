@@ -46,18 +46,12 @@ class Pitch(db.Model):
     comment = db.relationship('Comment', backref = 'pitch', lazy='dynamic')
     upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
     downvotes = db.relationship('Downvote', backref = 'pitch', lazy= 'dynamic')
-    
-    
-    def save_pitch(self):
+
+    def save_pitches(self):
         db.session.add(self)
         db.session.commit()
 
-    # @classmethod
-    # def get_pitches(cls,id):
-    #     pitches = Pitch.query.filter_by(category=category).all()
-    #     return pitches
-
-
+    
     def __repr__(self):
         return f'Pitch is {self.title}'
 

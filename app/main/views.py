@@ -28,12 +28,16 @@ def new_pitch():
     if form.validate_on_submit():
         title = form.title.data
         category = form.category.data
-        pitch = form.category.data
+        pitch = form.pitch.data
+        user_id = current_user
+        new_pitch= Pitch(title=title, category= category, pitch = pitch, user_id=current_user._get_current_object().id)
+        new_pitch.save_pitches()
+        print('current_user', current_user)
+        
 
-        new_pitch= Pitch(title=title, category= category, pitch = pitch, user_id=current_user)
-        new_pitch.save_pitch()
+
         return redirect(url_for('main.index'))
-    return render_template('new_pitch.html', pitch_form=form)
+    return render_template('new_pitch.html',form=form)
 
 @main.route('/comment/<int:pitch_id>')
 @login_required
