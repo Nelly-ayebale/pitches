@@ -10,14 +10,16 @@
                 <h4 class="card-subtitle mb-2">CATEGORY:{{pitch.category}}</h4>
                 <h4>PITCH:{{pitch.pitch}}</h4>
                 <h4>POSTED BY:{{pitch.user.username}}</h4>
-                <a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Comment</a>
+
+                <a href="/comment/{{pitch.id}}" class="btn btn-primary">Comment</a>
+                <a href="/view_comments/{{pitch.id}}" class="btn btn-primary">View Comments</a>
                 {% endfor %}
                 {%else%}
                 <h4>NO PITCHES</h4>
                 {% endif %}
             </div>
         </div>
+
     </div>
 </div>
-
 {% endmacro %}

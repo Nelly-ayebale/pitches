@@ -7,18 +7,23 @@
         {% if all_comments %}
         <div class="col-md-4">
             {%for comment in all_comments%}
-            <h3>{{comment.pitch.title}}</h3>
-            <p>{{comment.comment}}</p>
-            <h4>{{comment.user.username}}</h4>
+            <ul>
+                <li style="font-weight: bold; font-size: 20px;">Comment:{{comment.comment}}</li>
+                <h4>Posted By:--{{comment.user.username}}--</h4>
+            </ul>
         </div>
         {% endfor %}
         <div class="col-md-5">
-            {{wtf.quick_form(comment_form)}}
+            {{wtf.quick_form(form)}}
         </div>
         {% else %}
         <div class="col-md-3">
             <p>No Comments Posted Yet</p>
         </div>
+        <div class="col-md-5">
+            {{wtf.quick_form(form)}}
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

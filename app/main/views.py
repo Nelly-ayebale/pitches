@@ -39,14 +39,27 @@ def new_pitch():
         return redirect(url_for('main.index'))
     return render_template('new_pitch.html',form=form)
 
-# @main.route('/comment/<int:pitch_id>')
-# @login_required
-# def comment():
-#     form= CommentForm()
-#     if form.validate_on_submit():
+@main.route('/view_comments/<id>')
+@login_required
+def view_comments(id):
+    comment = Comment.get_comments(id)
+    title = "View Comments"
+    return render_template('comment.html', comment= comment, title=title)
 
-
+@main.route('/comment/<int:pitch_id>', methods=['GET', 'POST'])
+@login_required
+def comment(pitch_id):
+    form= CommentForm()
+    pitch = Pitch.query.filter_by(id= pitch_id).first()
     
+    if form.validate_on_submit():
+        comment = form.comment.data
+       
+        new_comment = Comment(comment=comment, user_id = current_user.id, pitch_id = pitch_id)
+        new_comment.save_comment()
+        return redirect(url_for('main.index'))
+    return render_template('new_comment.html', form= form,pitch_id=pitch_id)
+
 
 
 @main.route('/user/<uname>')
@@ -87,3 +100,12 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/user/<uname>/pitches')
+def user_pitches(uname):
+    user = User.query.filter_by(username=uname).first()
+    pitches = Pitch.query.filter_by(user_id = user.id).all()
+    pitches_number = Pitch.count_pitches(uname)
+    
+
+    return render_template("profile/profile.html", user=user,pitches=pitches,pitches_number=pitches_number)
