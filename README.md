@@ -31,5 +31,8 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 ## Author
 - AYEBALE NELLY ABIGAIL
 
+## Figma Blueprint
+[here](https://www.figma.com/file/PkWIgHLz8CAZ9GXYH1Bjyf/Pitches?node-id=0%3A1)
+
 [MIT](LICENSE) © 
 

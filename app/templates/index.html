@@ -6,7 +6,10 @@
 <div class="container">
     <h1 class="text-center" style="font-weight: bolder; color: darkblue; text-decoration: underline;">All Pitches</h1>
     <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
-
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#allpitches" style="font-weight: bold;">All
+                Pitches</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#project" style="font-weight: bold;">Project
                 Pitches</a>
@@ -25,18 +28,20 @@
         </li>
     </ul>
     <div class="tab-content">
-
-        <div class="container tab-pane fade" id="project"><br>
+        <div class="container tab-pane fade" id="allpitches" class="border"><br>
+            {{ macro.display(pitches)}}
+        </div>
+        <div class="container tab-pane fade" id="project" class="border"><br>
             {{ macro.display(projectpitch)}}
         </div>
-        <div class="container tab-pane fade" id="job"><br>
+        <div class="container tab-pane fade" id="job" class="border"><br>
             {{ macro.display(jobpitch) }}
         </div>
-        <div class="container tab-pane fade" id="business"><br>
+        <div class="container tab-pane fade" id="business" class="border"><br>
             {{ macro.display(businesspitch) }}
 
         </div>
-        <div class="container tab-pane fade" id="quote"><br>
+        <div class="container tab-pane fade" id="quote" class="border"><br>
             {{ macro.display(quotepitch) }}
 
         </div>

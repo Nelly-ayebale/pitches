@@ -39,25 +39,15 @@ def new_pitch():
         return redirect(url_for('main.index'))
     return render_template('new_pitch.html',form=form)
 
-@main.route('/comment/<int:pitch_id>')
-@login_required
-def comment(pitch_id):
-    form = CommentForm()
-    pitch=Pitch.query.get(pitch_id)
-    all_comments = Comment.query.filter_by(pitch_id).all()
-    if form.validate_on_submit():
-        comment = form.comment.data
-
-        comment = Comment(comment= comment, user_id=current_user, pitch_id=pitch_id)
-        comment.save_comment()
-        return redirect(url_for('.comment', pitch_id=pitch_id))
-    return render_template('new_comment.html', comment_form=form, pitch=pitch, all_comments=all_comments)
-
-# @main.route('/upvote/<int:pitch_id>', methods= ['GET', 'POST'])
+# @main.route('/comment/<int:pitch_id>')
 # @login_required
-# def upvote(pitch_id):
-#     pitch = Pitch.query.get(pitch_id)
-#     user
+# def comment():
+#     form= CommentForm()
+#     if form.validate_on_submit():
+
+
+    
+
 
 @main.route('/user/<uname>')
 def profile(uname):
