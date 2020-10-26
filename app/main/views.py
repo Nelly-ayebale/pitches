@@ -5,6 +5,21 @@ from .. import db, photos
 from .forms import PitchForm, CommentForm, UpvoteForm, DownvoteForm, UpdateProfile
 from flask_login import login_required, current_user
 
+
+@main.route('/')
+def index():
+    '''
+    View root page that returns the index page and its data
+    '''
+    project_pitch = Pitch.get_pitches('projectpitch')
+    job_pitch = Pitch.get_pitches('jobpitch')
+    business_pitch = Pitch.get_pitches('businesspitch')
+    quote_pitch = Pitch.get_pitches('quotepitch')
+
+    title = 'Home || All Pitches'
+
+    return render_template('index.html', title=title, projectpitch = project_pitch, jobpitch= job_pitch, businesspitch= business_pitch, quotepitch= quote_pitch)
+
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()

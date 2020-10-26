@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>Project Pitches</h3>
+                <a href="{{url_for('main.project_pitch')}}">View Project Pitches</a>
+            </div>
+            <div class="col-md-3">
+                <h3>Job Pitches</h3>
+                <a href="{{url_for('main.job_pitch')}}">View Job Pitches</a>
+            </div>
+            <div class="col-md-3">
+                <h3>Business Pitches</h3>
+                <a href="{{url_for('main.business_pitch')}}">View Business Pitches</a>
+            </div>
+            <div class="col-md-3">
+                <h3>Quote Pitches</h3>
+                <a href="{{url_for('main.quote_pitch')}}">View Quote Pitches</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
