@@ -21,6 +21,40 @@ def index():
 
     return render_template('index.html', title=title, projectpitch = project_pitch, jobpitch= job_pitch, businesspitch= business_pitch, quotepitch= quote_pitch)
 
+@main.route('/new_pitch', methods=['GET', 'POST'])
+@login_required
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        category = form.category.data
+        pitch = form.category.data
+
+        new_pitch= Pitch(title=title, category= category, pitch = pitch, user_id=current_user)
+        new_pitch.save_pitch()
+        return redirect(url_for('main.index'))
+    return render_template('new_pitch.html', pitch_form=form)
+
+@main.route('/comment/<int:pitch_id>')
+@login_required
+def comment(pitch_id):
+    form = CommentForm()
+    pitch=Pitch.query.get(pitch_id)
+    all_comments = Comment.query.filter_by(pitch_id).all()
+    if form.validate_on_submit():
+        comment = form.comment.data
+
+        comment = Comment(comment= comment, user_id=current_user, pitch_id=pitch_id)
+        comment.save_comment()
+        return redirect(url_for('.comment', pitch_id=pitch_id))
+    return render_template('new_comment.html', comment_form=form, pitch=pitch, all_comments=all_comments)
+
+# @main.route('/upvote/<int:pitch_id>', methods= ['GET', 'POST'])
+# @login_required
+# def upvote(pitch_id):
+#     pitch = Pitch.query.get(pitch_id)
+#     user
+
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
