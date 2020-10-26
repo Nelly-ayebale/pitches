@@ -1,10 +1,23 @@
-<!-- {% macro displayPitch(pitch_list) %}
+{% macro display(pitch_list) %}
 <div class="container-fluid">
     <div class="row">
         {% if pitch_list %}
         {% for pitch in pitch_list%}
         <div class="col-md-4">
             <h3>{{pitch.title}}</h3>
+            <h4>{{pitch.category}}</h4>
+            <p>{{pitch.pitch}}</p>
+            <h3>{{pitch.user.username}}</h3>
         </div>
+        {% endfor%}
+        {% else %}
+        <div class="card w-90 mb-3">
+            <div class="card-body">
+
+                <p class="card-title">Category Has 0 posts</p>
+            </div>
+        </div>
+        {% endif %}
     </div>
-</div> -->
+</div>
+{% endmacro %}

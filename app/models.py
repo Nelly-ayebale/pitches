@@ -12,7 +12,6 @@ class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True, index = True)
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
@@ -40,22 +39,23 @@ class Pitch(db.Model):
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     title = db.Column(db.String(255))
     category= db.Column(db.String(255))
-    pitch = db.Column(db.String(300))
+    pitch = db.Column(db.String(300), index=True)
     comment = db.relationship('Comment', backref = 'pitch', lazy='dynamic')
     upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
     downvotes = db.relationship('Downvote', backref = 'pitch', lazy= 'dynamic')
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    
     
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
 
-    @classmethod
-    def get_pitches(cls,id):
-        pitches = Pitch.query.filter_by(pitch_id=id).all()
-        return pitches
+    # @classmethod
+    # def get_pitches(cls,id):
+    #     pitches = Pitch.query.filter_by(category=category).all()
+    #     return pitches
 
 
     def __repr__(self):
