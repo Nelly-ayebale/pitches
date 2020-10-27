@@ -28,6 +28,13 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 - Flask
 - HTML
 
+## Specifications
+- The page loads with no user signed in
+- Once a user signs in th page reloads with their username at the top right of the navigation bar and receives a signing in message from my sender email.
+- Once a User clicks on category of the pitches, it will show NO PITCHES, unless there are existing pitches or the User has created some.
+- The User can comment on a specific pitch by clicking Comment and view their comment by clicking View Comments
+- Incase A User clicks their Username, They are redirected to the profile page where they can Update their profile picture and the bio as well.
+
 ## Author
 - AYEBALE NELLY ABIGAIL
 
