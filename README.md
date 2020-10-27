@@ -41,5 +41,8 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 ## Figma Blueprint
 [here](https://www.figma.com/file/PkWIgHLz8CAZ9GXYH1Bjyf/Pitches?node-id=0%3A1)
 
+## ERD DIAGRAM
+[here](https://lucid.app/lucidchart/1778b43b-ea07-4436-967d-38e44ac67abe/edit?beaconFlowId=B5F3A9B88848AE1E&page=0_0#?folder_id=home&browser=icon)
+
 [MIT](LICENSE) © 
 
