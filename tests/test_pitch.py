@@ -6,7 +6,7 @@ from app import db
 class TestPitch(unittest.TestCase):
 
     def setUp(self):
-        self.user_James = User(username= 'James', email='ayebalenellyabigail1606@gmail.com', bio= 'Hello I am James', profile_pic_path='app/static/photos', pass_secure= 'potato' )
+        self.user_James = User(username= 'James', email='ayebalenellyabi1606@gmail.com', bio= 'Hello I am James', profile_pic_path='app/static/photos', pass_secure= 'potato' )
         self.new_pitch = Pitch(user= self.user_James, title= 'password', category= 'businesspitch', pitch='A password managing app')
     
     # def tearDown(self):
