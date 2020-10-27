@@ -18,13 +18,8 @@ class Config:
         pass
 
 class ProdConfig(Config):
-    '''
-    Production  configuration child class
-
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    
 class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://ayebale:ayebale123@localhost/pitches_test'
 
